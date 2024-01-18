@@ -2,7 +2,7 @@ import axios from "axios";
 // import messages from "messages";
 
 const client = axios.create({
-    baseURL: 'http://localhost:8080',
+    baseURL: 'https://gamescore-api-prod-e3quocw7qq-as.a.run.app',
 });
 
 export const setAuthHeader = (token) => {

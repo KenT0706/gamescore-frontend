@@ -163,7 +163,7 @@ const updateProfile = async (e) => {
 
 
   try {
-    const response = await axios.put(`http://localhost:8080/users/${auth.userId}`, {
+    const response = await axios.put(`https://gamescore-api-prod-e3quocw7qq-as.a.run.app/users/${auth.userId}`, {
       name: name,
       email: email,
       score: score,
@@ -201,7 +201,7 @@ const updateFunction = async (e) => {
   const { password } = updatedData.value; // Assuming updatedData is a ref object
 
   try {
-    const response = await axios.put(`http://localhost:8080/users/${auth.userId}`, {
+    const response = await axios.put(`https://gamescore-api-prod-e3quocw7qq-as.a.run.app/users/${auth.userId}`, {
       password: password,
     }, {
       headers: headers,
@@ -246,7 +246,7 @@ const deleteHandle = () => {
 
 
   axios
-    .delete(`http://localhost:8080/users/${auth.userId}`, { headers })
+    .delete(`https://gamescore-api-prod-e3quocw7qq-as.a.run.app/users/${auth.userId}`, { headers })
     .then(response => {
       console.log("User deleted successfully:", response.data);
       localStorage.removeItem('token');

@@ -100,29 +100,24 @@ const router = useRouter(); // Assign the router instance
 
 
 const onRegister = async (e) => {
-  e.preventDefault();
-  if (!isFormInvalid.value) {
-    // Perform form submission logic here
-    console.log('Form submitted:', formData.value);
-
-
-    try {
-      const response = await client.post('/auth/register', formData.value);
-      console.log(response);
-      const tokenValue = response.accessToken;
-      localStorage.setItem('token', tokenValue);
-      token.value = tokenValue;
-      console.log(response, 'here goes');
-    } catch (error) {
-      console.log(error);
-      // Handle login error
-    }
-
-
-
-
+ e.preventDefault();
+ if (!isFormInvalid.value) {
+  try {
+    const response = await client.post('/auth/register', formData.value);
+    const tokenValue = response.accessToken;
+    localStorage.setItem('token', tokenValue);
+    token.value = tokenValue;
+    
+    // Display alert upon successful registration
+    window.alert("Registration successful!");
+    
+  } catch (error) {
+    console.log(error);
   }
+ }
 };
+
+
 
 
 const onLogin = async () => {
