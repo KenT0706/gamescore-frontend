@@ -100,7 +100,6 @@
     <div class="w-full text-center ">
      <form method="get" action="/leadersboard"  class="">
   <input
-    
     name="q"
     type="text"
     placeholder="Find players by BattleTag#1234..."

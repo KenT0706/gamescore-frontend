@@ -2,14 +2,25 @@ import axios from "axios";
 // import messages from "messages";
 
 const client = axios.create({
-    baseURL: 'https://gamescore-api-prod-e3quocw7qq-as.a.run.app',
+    baseURL: 'https://gamescore-api-prod-37cu4rqvoa-as.a.run.app',
+    // baseURL: 'http://localhost:8080',
 });
 
-export const setAuthHeader = (token) => {
-    client.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-};
 
-setAuthHeader(localStorage.getItem("token")); 
+client.interceptors.request.use(
+    (config) => {
+      const accessToken = localStorage.getItem("token"); 
+      if (accessToken) {
+        config.headers.Authorization = `Bearer ${accessToken}`;
+      }
+      return config;
+    },
+    (error) => {
+      // Handle request error
+      return Promise.reject(error);
+    }
+);
+
 
 const onSuccess = function (response) {
     return response.data;

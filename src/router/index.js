@@ -5,7 +5,11 @@ import { useAuthenticate } from "../store/Authenticate";
 import Admin from "../views/Admin.vue";
 import Login from "../views/Login.vue";
 import Leaderboard from "../views/Leaderboard.vue";
+import GameEntries from "../views/GameEntries/index.vue";
+import CreateGameEntry from "../views/GameEntries/create.vue";
+import EditGameEntry from "../views/GameEntries/edit.vue";
 import Profile from "../views/Profile.vue";
+import Signup from "../views/Signup.vue";
 
 const redirectToHomeOnLoggedIn = (to, from, next) => {
   if (useAuthenticate().isLoggedIn) next({ name: "home" });
@@ -44,10 +48,40 @@ const router = createRouter({
       meta: { requireAuth: true },
     },
     {
+      path: "/game-entries",
+      name: "game-entries",
+      component: GameEntries,
+      meta: { requireAuth: true },
+    },
+    {
+      path: "/game-entries/create",
+      name: "create-game-entry",
+      component: CreateGameEntry,
+      meta: { requireAuth: true },
+    },
+    {
+      path: "/game-entries",
+      name: "game-entries",
+      component: GameEntries,
+      meta: { requireAuth: true },
+    },
+    {
+      path: "/game-entries/:id/edit",
+      name: "edit-game-entry",
+      component: EditGameEntry,
+      meta: { requireAuth: true },
+    },
+    {
       path: "/profile",
       name: "profile",
       component: Profile,
       meta: { requireAuth: true },
+    },
+    {
+      path: "/register",
+      name: "register",
+      component: Signup,
+      beforeEnter: redirectToHomeOnLoggedIn, // Add the login route guard here
     },
     {
       path: "/:catchAll(.*)",
