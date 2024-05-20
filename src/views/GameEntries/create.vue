@@ -157,7 +157,31 @@
               {{ errors.tags }}
             </div>
           </div>
-
+          <div>
+            <div class="flex justify-between">
+              <label for="progress" class="block text-sm font-normal leading-6 text-white"
+                >Progress</label
+              >
+              <span class="text-white mt-2">{{ formData.progress }}%</span>
+            </div>
+            <div class="mt-2">
+              <input
+                id="progress"
+                v-model="formData.progress"
+                name="progress"
+                type="range"
+                step="1"
+                min="0"
+                max="100"
+                required
+                class="block w-full rounded-md py-1.5 text-white shadow-sm bg-gray-900 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+            <div v-if="errors.progress" class="mt-1 text-red-500 text-sm">
+              {{ errors.progress }}
+            </div>
+      
+          </div>
           <div class="flex items-center gap-4">
             <button
               type="submit"
@@ -185,6 +209,7 @@ const formData = ref({
   platform: null,
   genre: null,
   release_date: null,
+  progress: 0,
   additional_note: null,
   tags: null,
 });
@@ -194,6 +219,7 @@ const errors = ref({
   platform: null,
   genre: null,
   release_date: null,
+  progress: null,
   additional_note: null,
   tags: null,
 });
@@ -268,6 +294,7 @@ const validateRelease_Date = computed(() => {
   errors.value.release_date = "";
   return true;
 });
+
 const validateAdditional_Note = computed(() => {
   return true;
 });

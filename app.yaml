@@ -3,7 +3,7 @@ service: default
 
 handlers:
   # Serve all static files with urls ending with a file extension
-  - url: /(.*\.(gif|png|jpeg|css|js|svg|ico|html)(|\.map))$
+  - url: /(.*\.(gif|png|jpg|jpeg|css|js|svg|ico|html)(|\.map))$
     static_files: \1
     upload: (.*)(|\.map)
     secure: always

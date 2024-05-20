@@ -5,27 +5,39 @@
 
       <main>
         <div class="divide-y divide-white/5">
-          <div class="grid max-w-7xl grid-cols-1 mx-auto gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8">
+          <div
+            class="grid max-w-7xl grid-cols-1 mx-auto gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8"
+          >
             <div>
               <h2 class="text-base font-semibold leading-7 text-white">
                 Personal Information
               </h2>
               <p class="mt-1 text-sm leading-6 text-gray-400">
-                Use a permanent address where you can receive mail.
+                Please reenter your old password and change it to a new password to confirm other changes. Use a permanent address where you can receive mail.
               </p>
             </div>
 
             <form class="md:col-span-2 pl-20">
               <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:max-w-xl sm:grid-cols-6">
                 <div class="col-span-full flex items-center gap-x-8">
-                  <img :src="auth.avatar" alt="Preview"
-                    class="h-24 w-24 flex-none rounded-lg bg-gray-800 object-cover" />
+                  <img
+                    :src="auth.avatar ? auth.avatar : person"
+                    alt="Preview"
+                    class="h-24 w-24 flex-none rounded-lg bg-gray-800 object-cover"
+                  />
                   <div>
-                    <button type="button"
-                      class="rounded-md relative bg-white/10 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-white/20">
+                    <button
+                      type="button"
+                      class="rounded-md relative bg-white/10 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-white/20"
+                    >
                       Change avatar
-                      <input type="file" class="absolute left-0 top-0 w-full opacity-0 h-full" name=""
-                        @change="handleImageUpload" id="" />
+                      <input
+                        type="file"
+                        class="absolute left-0 top-0 w-full opacity-0 h-full"
+                        name=""
+                        @change="handleImageUpload"
+                        id=""
+                      />
                     </button>
                     <p class="mt-2 text-xs leading-5 text-gray-400">
                       JPG, GIF or PNG. 1MB max.
@@ -34,26 +46,56 @@
                 </div>
 
                 <div class="sm:col-span-3">
-                  <label for="first-name" class="block text-sm font-medium leading-6 text-white">Name</label>
+                  <label
+                    for="first-name"
+                    class="block text-sm font-medium leading-6 text-white"
+                    >Name</label
+                  >
                   <div class="mt-2">
-                    <input type="text" v-model="barObj.name" name="first-name" id="first-name" autocomplete="given-name"
-                      class="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm px-3 ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6" />
+                    <input
+                      type="text"
+                      v-model="barObj.name"
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      class="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm px-3 ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+                    />
                   </div>
                 </div>
 
                 <div class="col-span-full">
-                  <label for="email" class="block text-sm font-medium leading-6 text-white">Email address</label>
+                  <label
+                    for="email"
+                    class="block text-sm font-medium leading-6 text-white"
+                    >Email address</label
+                  >
                   <div class="mt-2">
-                    <input id="email" v-model="barObj.email" name="email" type="email" autocomplete="email"
-                      class="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset px-4 ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6" />
+                    <input
+                      id="email"
+                      v-model="barObj.email"
+                      name="email"
+                      type="email"
+                      autocomplete="email"
+                      class="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset px-4 ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+                    />
                   </div>
                 </div>
 
                 <div class="col-span-full">
-                  <label for="score" class="block text-sm font-medium leading-6 text-white">Score</label>
+                  <label
+                    for="score"
+                    class="block text-sm font-medium leading-6 text-white"
+                    >Score</label
+                  >
                   <div class="mt-2">
-                    <input id="score" v-model="barObj.score" name="score" type="score" autocomplete="score"
-                      class="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset px-4 ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6" />
+                    <input
+                      id="score"
+                      v-model="barObj.score"
+                      name="score"
+                      type="score"
+                      autocomplete="score"
+                      class="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset px-4 ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+                    />
                   </div>
                 </div>
 
@@ -77,15 +119,20 @@
               </div>
 
               <div class="mt-8 flex">
-                <button type="submit" @click="updateProfile"
-                  class="rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                <button
+                  type="submit"
+                  @click="updateProfile"
+                  class="rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                >
                   Save
                 </button>
               </div>
             </form>
           </div>
 
-          <div class="grid max-w-7xl mx-auto grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8">
+          <div
+            class="grid max-w-7xl mx-auto grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8"
+          >
             <div>
               <h2 class="text-base font-semibold leading-7 text-white">
                 Change password
@@ -98,48 +145,70 @@
             <div class="md:col-span-2 pl-20">
               <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:max-w-xl sm:grid-cols-6">
                 <div class="col-span-full">
-                  <label for="current-password" class="block text-sm font-medium leading-6 text-white">Current password</label>
+                  <label
+                    for="current-password"
+                    class="block text-sm font-medium leading-6 text-white"
+                    >Current password</label
+                  >
                   <div class="mt-2">
-                    <input v-model="updatedData.email" id="current-password" name="current_password" type="email"
+                    <input
+                      v-model="updatedData.email"
+                      id="current-password"
+                      name="current_password"
+                      type="email"
                       autocomplete="current-password"
-                      class="block w-full rounded-md border-0 px-2 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6" />
+                      class="block w-full rounded-md border-0 px-2 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+                    />
                   </div>
                 </div>
 
                 <div class="col-span-full">
-                  <label for="new-password" class="block text-sm font-medium leading-6 text-white">New password</label>
+                  <label
+                    for="new-password"
+                    class="block text-sm font-medium leading-6 text-white"
+                    >New password</label
+                  >
                   <div class="mt-2">
-                    <input v-model="updatedData.password" id="new-password" name="new_password" type="password"
+                    <input
+                      v-model="updatedData.password"
+                      id="new-password"
+                      name="new_password"
+                      type="password"
                       autocomplete="new-password"
-                      class="block w-full rounded-md border-0 bg-white/5 py-1.5 px-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6" />
+                      class="block w-full rounded-md border-0 bg-white/5 py-1.5 px-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+                    />
                   </div>
                 </div>
               </div>
 
               <div class="mt-8 flex">
-                <button @click="updateFunction"
-                  class="rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                <button
+                  @click="updateFunction"
+                  class="rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                >
                   Save
                 </button>
               </div>
             </div>
           </div>
 
-          <div class="grid max-w-7xl grid-cols-1 gap-x-8 mx-auto gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8">
+          <div
+            class="grid max-w-7xl grid-cols-1 gap-x-8 mx-auto gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8"
+          >
             <div>
-              <h2 class="text-base font-semibold leading-7 text-white">
-                Delete account
-              </h2>
+              <h2 class="text-base font-semibold leading-7 text-white">Delete account</h2>
               <p class="mt-1 text-sm leading-6 text-gray-400">
-                No longer want to use our service? You can delete your account
-                here. This action is not reversible. All information related to
-                this account will be deleted permanently.
+                No longer want to use our service? You can delete your account here. This
+                action is not reversible. All information related to this account will be
+                deleted permanently.
               </p>
             </div>
 
             <div class="flex items-start md:col-span-2 pl-20">
-              <button @click="openModal"
-                class="rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400">
+              <button
+                @click="openModal"
+                class="rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400"
+              >
                 Yes, delete my account
               </button>
             </div>
@@ -156,12 +225,7 @@ import { ref, onMounted } from "vue";
 import client from "../axios.config";
 import { useAuthenticate } from "../store/Authenticate";
 import Modal from "../components/Modal.vue";
-import {
-  Dialog,
-  DialogPanel,
-  TransitionChild,
-  TransitionRoot,
-} from "@headlessui/vue";
+import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from "@headlessui/vue";
 import {
   ChartBarSquareIcon,
   Cog6ToothIcon,
@@ -174,6 +238,7 @@ import {
 import { Bars3Icon, MagnifyingGlassIcon } from "@heroicons/vue/20/solid";
 import axios from "axios";
 import { useRouter } from "vue-router";
+import person from '../assets/images/a.jpeg'
 const router = useRouter();
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
@@ -203,17 +268,23 @@ const updateProfile = async (e) => {
 
   const { name, email, score, password, timezone } = barObj.value; // Assuming updatedData is a ref object
 
+  // Construct the data object conditionally
+  const updateData = {
+    name: name,
+    email: email,
+    score: score,
+    role: "user",
+    timezone: timezone,
+  };
+
+  if (password) {
+    updateData.password = password;
+  }
+
   try {
     const response = await axios.put(
       `https://gamescore-api-prod-37cu4rqvoa-as.a.run.app/users/${auth.userId}`,
-      {
-        name: name,
-        email: email,
-        score: score,
-        role: "user",
-        timezone: timezone,
-        password: password,
-      },
+      updateData,
       {
         headers: headers,
       }
@@ -238,19 +309,29 @@ const updateProfile = async (e) => {
   }
 };
 
+
 const updateFunction = async (e) => {
   e.preventDefault();
+
+  // Check if the password field is empty
+  if (!updatedData.value.password) {
+    toast.error(
+      "Please provide a new password and reenter your old one to confirm changes"
+    );
+    return;
+  }
+
   toast("Password Changed!", {
     autoClose: 1000,
   });
 
   const token = localStorage.getItem("token");
   const headers = {
-    Authorization: `${token}`, // Corrected format for the Authorization header
+    Authorization: `${token}`,
     "Content-Type": "application/json",
   };
 
-  const { password } = updatedData.value; // Assuming updatedData is a ref object
+  const { password } = updatedData.value;
 
   try {
     const response = await axios.put(
@@ -264,15 +345,14 @@ const updateFunction = async (e) => {
     );
 
     // Handle the response as needed
-    console.log(response.data); // If the API returns any data in the response
+    console.log(response.data);
+
     try {
       const response = await client.get("/users/" + auth.userId);
       barObj.value = response;
     } catch (error) {
       console.error(error);
     }
-
-    // Optionally, you can perform additional actions after the update is successful, like showing a success message or updating the UI.
   } catch (error) {
     console.error("Error updating user:", error.response.data);
   }
@@ -300,10 +380,9 @@ const deleteHandle = () => {
   };
 
   axios
-    .delete(
-      `https://gamescore-api-prod-37cu4rqvoa-as.a.run.app/users/${auth.userId}`,
-      { headers }
-    )
+    .delete(`https://gamescore-api-prod-37cu4rqvoa-as.a.run.app/users/${auth.userId}`, {
+      headers,
+    })
     .then((response) => {
       console.log("User deleted successfully:", response.data);
       localStorage.removeItem("token");
@@ -332,7 +411,7 @@ const handleImageUpload = (event) => {
     reader.onload = async () => {
       uploadedImage.value = reader.result;
       const formData = new FormData();
-      formData.append('avatar', file);
+      formData.append("avatar", file);
 
       try {
         const response = await client.put(`/users/${auth.userId}/avatar`, formData);
@@ -341,7 +420,6 @@ const handleImageUpload = (event) => {
       } catch (error) {
         console.error(error);
       }
-
 
       auth.setAvatar(barObj.value.avatar);
     };

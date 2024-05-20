@@ -191,7 +191,7 @@ const onRegister = async (e) => {
       token.value = tokenValue;
 
       // Display alert upon successful registration
-      window.alert("Registration successful!");
+      window.alert("Registration successful! Please log-in with the registered account");
     } catch (error) {
       console.log(error);
     }

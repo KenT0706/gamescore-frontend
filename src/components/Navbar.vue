@@ -65,16 +65,17 @@
                 <span class="sr-only">Open user menu</span>
                 <img
                   class="h-8 w-8 rounded-full"
-                  :src="auth.avatar === null ? defualtImage : auth.avatar"
+                  :src="auth.avatar === null ? defaultImage : auth.avatar"
                   alt=""
                 />
+               
               </MenuButton>
               <MenuButton
                 v-else-if="auth.isLoggedIn === false"
                 class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
               >
                 <span class="sr-only">Open user menu</span>
-                <img class="h-8 w-8 rounded-full" :src="defualtImage" alt="no" />
+                <img class="h-8 w-8 rounded-full" :src="defaultImage" alt="no" />
               </MenuButton>
             </div>
             <transition
@@ -174,9 +175,9 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/vue/24/outline";
 import { useAuthenticate } from "../store/Authenticate";
 import { useRouter } from "vue-router";
 import { ref, computed, watch, onMounted } from "vue";
+import person from '../assets/images/a.jpeg'
 
-const defualtImage =
-  "https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg";
+const defaultImage = person;
 
 const router = useRouter();
 
@@ -212,7 +213,9 @@ watch(
       {
         name: "Game Entries",
         href: "/game-entries",
-        current: (currentRoute.value.fullPath === "/game-entries")||(currentRoute.value.fullPath === "/game-entries/create"),
+        current:
+          currentRoute.value.fullPath === "/game-entries" ||
+          currentRoute.value.fullPath === "/game-entries/create",
       },
       // Exclude the "Login" link if the user is logged in
       ...(auth.isLoggedIn

@@ -102,7 +102,7 @@
   <input
     name="q"
     type="text"
-    placeholder="Find players by BattleTag#1234..."
+    placeholder="Find players here, hit 'Enter' after typing the name"
     class="bg-black border-primary border-2 border-solid text-white text-xl p-4 rounded-md shadow-lg focus:outline-none w-full md:w-[75%]"
     id="mySearch"
   />

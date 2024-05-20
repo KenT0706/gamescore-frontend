@@ -32,6 +32,12 @@
             >
               Platform
             </th>
+            <th
+              scope="col"
+              class="py-2 pl-0 pr-4 text-right font-semibold sm:pr-8 sm:text-left lg:pr-20"
+            >
+              Tags
+            </th>
             <th scope="col" class="py-2 pl-0 pr-8 font-semibold lg:pr-20">Genre</th>
             <th scope="col" class="py-2 pl-0 pr-8 font-semibold lg:pr-20">Progress</th>
             <th scope="col" class="py-2 pl-0 pr-8 font-semibold lg:pr-20">Action</th>
@@ -60,6 +66,13 @@
                 </div>
               </div>
             </td>
+            <td class="hidden py-0 pl-0 pr-4 sm:table-cell sm:pr-8">
+              <div class="flex gap-x-3">
+                <div class="font-mono text-sm leading-6 text-white">
+                  {{ item.tags }}
+                </div>
+              </div>
+            </td>
             <td class="hidden py-4 pl-0 pr-4 sm:table-cell sm:pr-8">
               <div class="flex gap-x-3">
                 <div class="font-mono text-sm leading-6 text-white">
@@ -82,7 +95,7 @@
                 >edit</router-link
               >
               <button
-                :onclick="()=>deleteGame(item.id)"
+                :onclick="() => deleteGame(item.id)"
                 className="btn text-white bg-red-500 px-4 py-2 rounded-e-lg"
               >
                 delete
@@ -112,8 +125,8 @@ const filterUsers = (query) => {
 
 const deleteGame = async (id) => {
   try {
-    const response = await client.delete(`/games/${id}/`);
-    router.push('/game-entries')
+    await client.delete(`/games/${id}/`);
+    barObj.value = barObj.value.filter((v) => v.id != id);
   } catch (error) {
     console.error(error);
   }
