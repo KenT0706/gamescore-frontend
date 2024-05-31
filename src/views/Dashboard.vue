@@ -5,7 +5,7 @@
         <div
           class="text-center p-2 rounded-md text-white text-3xl tracking-wide font-title"
         >
-          Welcome to the new Buff!
+          Welcome to the Gamescore!
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div class="flex flex-col space-y-2 items-center">
